@@ -6,9 +6,17 @@ from typing import Dict
 
 app = FastAPI(
     title="API de Utilidades",
-    description="API simples com endpoints para gerar números aleatórios e obter horário atual",
+    description="API simples com endpoints para gerar números aleatórios, nomes e obter horário atual",
     version="1.0.0"
 )
+
+# Lista de 20 nomes pré-definidos
+NAMES_LIST = [
+    "Ana", "Bruno", "Carla", "Daniel", "Eduarda", 
+    "Felipe", "Gabriela", "Henrique", "Isabela", "João",
+    "Karina", "Lucas", "Mariana", "Nicolas", "Olivia",
+    "Pedro", "Queila", "Rafael", "Sofia", "Thiago"
+]
 
 @app.get("/")
 def read_root() -> Dict[str, str]:
@@ -17,7 +25,8 @@ def read_root() -> Dict[str, str]:
         "message": "Bem-vindo à API de Utilidades!",
         "endpoints": {
             "números aleatórios": "/random",
-            "horário atual": "/time"
+            "horário atual": "/time",
+            "nomes aleatórios": "/name"
         }
     }
 
@@ -40,6 +49,12 @@ def get_current_time() -> Dict[str, str]:
         "current_time": local_time.isoformat(),
         "timezone": "America/Sao_Paulo"
     }
+
+@app.get("/name")
+def generate_random_name() -> Dict[str, str]:
+    """Gera um nome aleatório a partir de uma lista pré-definida"""
+    random_name = random.choice(NAMES_LIST)
+    return {"random_name": random_name}
 
 # Para ambientes de desenvolvimento/local
 if __name__ == "__main__":

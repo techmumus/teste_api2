@@ -1,12 +1,13 @@
 # Techmumus Teste API2
 
-API simples desenvolvida com FastAPI contendo endpoints para geração de números aleatórios e obtenção de horário atual.
+API simples desenvolvida com FastAPI contendo endpoints para geração de números aleatórios, nomes e obtenção de horário atual.
 
 ## Endpoints
 
 - `GET /` - Página inicial com informações da API
 - `GET /random` - Gera um número aleatório entre 0 e 1000
 - `GET /time` - Retorna o horário atual
+- `GET /name` - Gera um nome aleatório
 
 ## Deployment no Railway
 
